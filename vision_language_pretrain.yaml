@@ -1,0 +1,9 @@
+exp_name: "mlm_itm_itc_base"
+datasets: ["coco", "vg", "sbu", "gcc"]
+loss_names: {"itm": 1,"itc": 1,"mlm": 1,"textmlm": 0,"vqa": 0,"nlvr2": 0,"irtr": 0}
+batch_size: 1024
+whole_word_masking: True
+learning_rate: 2e-4
+train_transform_keys: ["square_transform_randaug"]
+val_transform_keys: ["square_transform"]
+model_arch: "vlmo_base_patch16"

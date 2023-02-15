@@ -1,0 +1,60 @@
+batch_size: 1024
+data_root: ''
+datasets:
+- coco
+- vg
+- sbu
+- gcc
+decay_power: 1
+draw_false_image: 0
+draw_false_text: 0
+drop_path_rate: 0.1
+end_lr: 0
+exp_name: vlmo
+fast_dev_run: false
+get_recall_metric: false
+get_recall_rerank_metric: false
+image_only: false
+image_size: 224
+k_test: 32
+learning_rate: 1e-4
+load_path: ''
+log_dir: result
+loss_names:
+  irtr: 0
+  itc: 1
+  itm: 1
+  mlm: 1
+  nlvr2: 0
+  textmlm: 0
+  vqa: 0
+lr_mult: 1
+max_epoch: 100
+max_steps: 200000
+max_text_len: 40
+max_text_len_of_initckpt: 196
+mlm_prob: 0.15
+model_arch: vlmo_base_patch16
+num_gpus: 1
+num_nodes: 1
+num_workers: 8
+optim_type: adamw
+per_gpu_batchsize: 4
+precision: 16
+resume_during_training: false
+resume_from: None
+seed: 1
+test_only: false
+text_only: false
+tokenizer: bert-base-uncased
+train_transform_keys:
+- square_transform_randaug
+use_sharded_training: false
+val_check_interval: 1.0
+val_transform_keys:
+- square_transform
+vocab_size: 30522
+vqav2_label_size: 3129
+warmup_steps: 0.1
+weight_decay: 0.01
+whole_word_masking: false

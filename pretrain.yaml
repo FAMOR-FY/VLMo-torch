@@ -1,0 +1,61 @@
+exp_name: "vlmo"
+seed: 1
+datasets: ["coco", "vg", "sbu", "gcc"]
+loss_names: {"itm": 1,"itc": 1,"mlm": 1,"textmlm": 0,"vqa": 0,"nlvr2": 0,"irtr": 0}
+batch_size: 1024  # this is a desired batch size; pl trainer will accumulate gradients when per step batch is smaller.
+
+# Image setting
+train_transform_keys: ["square_transform_randaug"]
+val_transform_keys: ["square_transform"]
+image_size: 224
+draw_false_image: 0
+image_only: False
+text_only: False
+
+# Text Setting
+vqav2_label_size: 3129
+max_text_len: 40
+max_text_len_of_initckpt: 196
+tokenizer: "bert-base-uncased"
+vocab_size: 30522
+whole_word_masking: False
+mlm_prob: 0.15
+draw_false_text: 0
+
+# Transformer Setting
+model_arch: "vlmo_base_patch16"
+drop_path_rate: 0.1
+
+# Optimizer Setting
+optim_type: "adamw"
+learning_rate: 1e-4
+weight_decay: 0.01
+decay_power: 1
+max_epoch: 100
+max_steps: 200000
+warmup_steps: 0.1
+end_lr: 0
+lr_mult: 1  # multiply lr for downstream heads
+
+# Downstream Setting
+get_recall_metric: False
+get_recall_rerank_metric: False
+k_test: 32
+
+# PL Trainer Setting
+resume_from: None
+fast_dev_run: False
+val_check_interval: 1.0
+test_only: False
+use_sharded_training: False
+resume_during_training: False
+
+# below params varies with the environment
+data_root: ""
+log_dir: "result"
+per_gpu_batchsize: 4  # you should define this manually with per_gpu_batch_size=#
+num_gpus: 1
+num_nodes: 1
+load_path: ""
+num_workers: 8
+precision: 16

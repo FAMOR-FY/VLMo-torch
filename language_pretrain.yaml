@@ -1,0 +1,10 @@
+exp_name: "textmlm_base"
+datasets: ["wikibk"]
+loss_names: {"itm": 0,"itc": 0,"mlm": 0,"textmlm": 1,"vqa": 0,"nlvr2": 0,"irtr": 0}
+batch_size: 1024
+max_text_len: 196
+learning_rate: 2e-4
+whole_word_masking: True
+train_transform_keys: ["square_transform_randaug"]
+val_transform_keys: ["square_transform"]
+model_arch: "vlmo_base_patch16"

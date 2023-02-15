@@ -1,0 +1,12 @@
+exp_name: "finetune_nlvr2_base"
+datasets: ["nlvr2"]
+train_transform_keys: ["square_transform_randaug"]
+loss_names: {"itm": 0,"itc": 0,"mlm": 0,"textmlm": 0,"vqa": 0,"nlvr2": 1,"irtr": 0}
+batch_size: 128
+max_epoch: 10
+max_steps: None
+warmup_steps: 0.1
+learning_rate: 5e-5
+val_transform_keys: ["square_transform"]
+use_sharded_training: False
+model_arch: "vlmo_base_patch16"
